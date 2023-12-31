@@ -1,0 +1,1035 @@
+@prefix : <http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@base <http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite> .
+
+<http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/CancelsSubscription
+:CancelsSubscription rdf:type owl:ObjectProperty ;
+                     rdfs:domain :Subscriber ;
+                     rdfs:range :SubscriberAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/analyzesContent
+:analyzesContent rdf:type owl:ObjectProperty ;
+                 rdfs:domain [ owl:intersectionOf ( :Administrator
+                                                    :Original_Creator
+                                                  ) ;
+                               rdf:type owl:Class
+                             ] ;
+                 rdfs:range :Content .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/canChangeSubscription
+:canChangeSubscription rdf:type owl:ObjectProperty ;
+                       rdfs:domain :Subscriber ;
+                       rdfs:range [ rdf:type owl:Class ;
+                                    owl:unionOf ( :Basic
+                                                  :Premium
+                                                  :Standard
+                                                )
+                                  ] .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/canCreateWatchlist
+:canCreateWatchlist rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Subscriber ;
+                    rdfs:range :SubscriberAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/canDownload
+:canDownload rdf:type owl:ObjectProperty ;
+             rdfs:domain :Subscriber ;
+             rdfs:range :Content .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/canSubscribeTo
+:canSubscribeTo rdf:type owl:ObjectProperty ;
+                rdfs:domain :CasualViewer ;
+                rdfs:range [ rdf:type owl:Class ;
+                             owl:unionOf ( :Basic
+                                           :Premium
+                                           :Standard
+                                         )
+                           ] .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/cansetParental_Controls
+:cansetParental_Controls rdf:type owl:ObjectProperty ;
+                         rdfs:domain :Subscriber ;
+                         rdfs:range :SubscriberAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/followsGuidelines
+:followsGuidelines rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Original_Creator ;
+                   rdfs:range <http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Rule&Regulation> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/generatesRevenueBy
+:generatesRevenueBy rdf:type owl:ObjectProperty ;
+                    rdfs:domain <https://schema.org/creator> ;
+                    rdfs:range <http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Rule&Regulation> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/givesRating
+:givesRating rdf:type owl:ObjectProperty ;
+             rdfs:domain :Subscriber ;
+             rdfs:range :Content .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/hasBenefitsOf
+:hasBenefitsOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :Subscriber ;
+               rdfs:range :SubscriberAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/hasFeatures
+:hasFeatures rdf:type owl:ObjectProperty ;
+             rdfs:domain :Basic ,
+                         :Premium ,
+                         :Standard ;
+             rdfs:range :Basic_Features ,
+                        :Premium_Features ,
+                        :Standard_Features .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/isOwnedBy
+:isOwnedBy rdf:type owl:ObjectProperty ;
+           rdfs:domain :Content ;
+           rdfs:range <https://schema.org/creator> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/paysFor
+:paysFor rdf:type owl:ObjectProperty ;
+         rdfs:domain :CasualViewer ;
+         rdfs:range :Content .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/signsContract
+:signsContract rdf:type owl:ObjectProperty ;
+               rdfs:domain :Production_Company ;
+               rdfs:range :Administrator .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/supervisesContent
+:supervisesContent rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Administrator ;
+                   rdfs:range :Content .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/uploadsContent
+:uploadsContent rdf:type owl:ObjectProperty ;
+                rdfs:domain [ owl:intersectionOf ( :AdminAccount
+                                                   :creatorAccount
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] ;
+                rdfs:range :Content .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/utilizesAdminAccount
+:utilizesAdminAccount rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Administrator ;
+                      rdfs:range :AdminAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/utilizesCreatorAccount
+:utilizesCreatorAccount rdf:type owl:ObjectProperty ;
+                        rdfs:domain :Original_Creator ;
+                        rdfs:range :creatorAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/utilizesGuestAccount
+:utilizesGuestAccount rdf:type owl:ObjectProperty ;
+                      rdfs:domain :CasualViewer ;
+                      rdfs:range :guestAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/utilizesSubscriberAccount
+:utilizesSubscriberAccount rdf:type owl:ObjectProperty ;
+                           rdfs:domain :Subscriber ;
+                           rdfs:range :SubscriberAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/watchesContent
+:watchesContent rdf:type owl:ObjectProperty ;
+                rdfs:domain [ rdf:type owl:Class ;
+                              owl:unionOf ( :CasualViewer
+                                            :Subscriber
+                                          )
+                            ] ;
+                rdfs:range :Content .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/willBlockAccount
+:willBlockAccount rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Administrator ;
+                  rdfs:range :Basic .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/SubscriberBenefits
+:SubscriberBenefits rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :SubscriberAccount ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/SubscriptionCancel
+:SubscriptionCancel rdf:type owl:DatatypeProperty ;
+                    rdfs:domain :SubscriberAccount ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/basic_plan_features
+:basic_plan_features rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Basic_Features ;
+                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_Analytics
+:content_Analytics rdf:type owl:DatatypeProperty ;
+                   rdfs:domain [ owl:intersectionOf ( :AdminAccount
+                                                      :creatorAccount
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_Cost
+:content_Cost rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Content ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_actors
+:content_actors rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Content ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_description
+:content_description rdf:type owl:DatatypeProperty ;
+                     rdfs:domain :Content ;
+                     rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_duration
+:content_duration rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Content ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_genre
+:content_genre rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Content ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_guidelines
+:content_guidelines rdf:type owl:DatatypeProperty ;
+                    rdfs:domain <http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Rule&Regulation> ;
+                    rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_language
+:content_language rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :Content ;
+                  rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_rating
+:content_rating rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Content ;
+                rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_release_date
+:content_release_date rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Content ;
+                      rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_revenue
+:content_revenue rdf:type owl:DatatypeProperty ;
+                 rdfs:domain :Content ;
+                 rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_title
+:content_title rdf:type owl:DatatypeProperty ;
+               rdfs:domain :Content ;
+               rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/content_type
+:content_type rdf:type owl:DatatypeProperty ;
+              rdfs:domain :Content ;
+              rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/email
+:email rdf:type owl:DatatypeProperty ;
+       rdfs:domain :Account ;
+       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/offline_downloads
+:offline_downloads rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :SubscriberAccount ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/parentalControls
+:parentalControls rdf:type owl:DatatypeProperty ;
+                  rdfs:domain :SubscriberAccount ;
+                  rdfs:range xsd:boolean .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/password
+:password rdf:type owl:DatatypeProperty ;
+          rdfs:domain :Account ;
+          rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/premium_plan_features
+:premium_plan_features rdf:type owl:DatatypeProperty ;
+                       rdfs:domain :Premium_Features ;
+                       rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/standard_plan_features
+:standard_plan_features rdf:type owl:DatatypeProperty ;
+                        rdfs:domain :Standard_Features ;
+                        rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/subscription_type
+:subscription_type rdf:type owl:DatatypeProperty ;
+                   rdfs:domain :SubscriberAccount ;
+                   rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/user_name
+:user_name rdf:type owl:DatatypeProperty ;
+           rdfs:domain :Account ;
+           rdfs:range xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/watchlist
+:watchlist rdf:type owl:DatatypeProperty ;
+           rdfs:domain :SubscriberAccount ;
+           rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Account
+:Account rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/AdminAccount
+:AdminAccount rdf:type owl:Class ;
+              rdfs:subClassOf :Account .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Administrator
+:Administrator rdf:type owl:Class ;
+               rdfs:subClassOf <https://schema.org/Person> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Basic
+:Basic rdf:type owl:Class ;
+       rdfs:subClassOf :Subscription_Plan .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Basic_Features
+:Basic_Features rdf:type owl:Class ;
+                rdfs:subClassOf :Basic .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/CasualViewer
+:CasualViewer rdf:type owl:Class ;
+              rdfs:subClassOf <https://schema.org/Person> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Content
+:Content rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Documentary
+:Documentary rdf:type owl:Class ;
+             rdfs:subClassOf <https://schema.org/VideoObject> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/FullLengthMovie
+:FullLengthMovie rdf:type owl:Class ;
+                 rdfs:subClassOf <https://schema.org/Movie> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Original_Creator
+:Original_Creator rdf:type owl:Class ;
+                  rdfs:subClassOf <https://schema.org/creator> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Podcast
+:Podcast rdf:type owl:Class ;
+         rdfs:subClassOf <https://schema.org/Episode> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Premium
+:Premium rdf:type owl:Class ;
+         rdfs:subClassOf :Subscription_Plan .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Premium_Features
+:Premium_Features rdf:type owl:Class ;
+                  rdfs:subClassOf :Premium .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Production_Company
+:Production_Company rdf:type owl:Class ;
+                    rdfs:subClassOf <https://schema.org/creator> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/ShortFilm
+:ShortFilm rdf:type owl:Class ;
+           rdfs:subClassOf <https://schema.org/Movie> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Standard
+:Standard rdf:type owl:Class ;
+          rdfs:subClassOf :Subscription_Plan .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Standard_Features
+:Standard_Features rdf:type owl:Class ;
+                   rdfs:subClassOf :Standard .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Subscriber
+:Subscriber rdf:type owl:Class ;
+            rdfs:subClassOf <https://schema.org/Person> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/SubscriberAccount
+:SubscriberAccount rdf:type owl:Class ;
+                   rdfs:subClassOf :Account .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Subscription_Plan
+:Subscription_Plan rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/creatorAccount
+:creatorAccount rdf:type owl:Class ;
+                rdfs:subClassOf :Account .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/guestAccount
+:guestAccount rdf:type owl:Class ;
+              rdfs:subClassOf :Account .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Rule&Regulation
+<http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Rule&Regulation> rdf:type owl:Class .
+
+
+###  https://schema.org/Episode
+<https://schema.org/Episode> rdf:type owl:Class ;
+                             rdfs:subClassOf <https://schema.org/VideoObject> .
+
+
+###  https://schema.org/Movie
+<https://schema.org/Movie> rdf:type owl:Class ;
+                           rdfs:subClassOf <https://schema.org/VideoObject> .
+
+
+###  https://schema.org/MusicVideoObject
+<https://schema.org/MusicVideoObject> rdf:type owl:Class ;
+                                      rdfs:subClassOf <https://schema.org/VideoObject> .
+
+
+###  https://schema.org/Person
+<https://schema.org/Person> rdf:type owl:Class .
+
+
+###  https://schema.org/TVSeries
+<https://schema.org/TVSeries> rdf:type owl:Class ;
+                              rdfs:subClassOf <https://schema.org/Episode> .
+
+
+###  https://schema.org/VideoObject
+<https://schema.org/VideoObject> rdf:type owl:Class ;
+                                 rdfs:subClassOf :Content .
+
+
+###  https://schema.org/creator
+<https://schema.org/creator> rdf:type owl:Class ;
+                             rdfs:subClassOf <https://schema.org/Person> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/AdminAcc
+:AdminAcc rdf:type owl:NamedIndividual ,
+                   :AdminAccount ;
+          :analyzesContent :Before_Sunset ,
+                           :Numb ,
+                           :Oppenheimer_TheRealStory ,
+                           :Pursuit_of_Happyness ,
+                           :SmartLess ,
+                           :Specialz ,
+                           :Spirited_Away ,
+                           :Summer_Ghost ,
+                           :The_Boys ,
+                           :The_Great_Hack ,
+                           :The_Joe_Rogan_Experience ,
+                           :The_Last_of_Us ;
+          :uploadsContent :Before_Sunset ,
+                          :Numb ,
+                          :Oppenheimer_TheRealStory ,
+                          :Pursuit_of_Happyness ,
+                          :Spirited_Away ,
+                          :Summer_Ghost ,
+                          :The_Boys ,
+                          :The_Great_Hack ,
+                          :The_Last_of_Us ;
+          :content_Analytics """Rating,
+Views,
+Performance Chart""" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Adrian_Miller
+:Adrian_Miller rdf:type owl:NamedIndividual ,
+                        :CasualViewer ;
+               :canSubscribeTo :Basic_Package ,
+                               :Premium_Package ,
+                               :Standard_Package ;
+               :paysFor :Before_Sunset ,
+                        :Numb ,
+                        :Oppenheimer_TheRealStory ,
+                        :Pursuit_of_Happyness ,
+                        :SmartLess ,
+                        :Specialz ,
+                        :Spirited_Away ,
+                        :Summer_Ghost ,
+                        :The_Boys ,
+                        :The_Great_Hack ,
+                        :The_Joe_Rogan_Experience ,
+                        :The_Last_of_Us ;
+               :utilizesGuestAccount :GuestAcc ;
+               :watchesContent :Before_Sunset ,
+                               :Numb ,
+                               :Oppenheimer_TheRealStory ,
+                               :Pursuit_of_Happyness ,
+                               :SmartLess ,
+                               :Specialz ,
+                               :Spirited_Away ,
+                               :Summer_Ghost ,
+                               :The_Boys ,
+                               :The_Great_Hack ,
+                               :The_Joe_Rogan_Experience ,
+                               :The_Last_of_Us .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Amazon_Prime_Video
+:Amazon_Prime_Video rdf:type owl:NamedIndividual ,
+                             :Production_Company ;
+                    :generatesRevenueBy :Creator_Guidelines ;
+                    :signsContract :Harald_Sack ;
+                    :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Basic_Package
+:Basic_Package rdf:type owl:NamedIndividual ,
+                        :Basic ;
+               :hasFeatures :Basic_Plan_Features ;
+               :basic_plan_features """Price Rs.500,
+720p Video Quality,
+2 Devices Supported,
+Offline Viewing,
+Ad-supported Content""" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Basic_Plan_Features
+:Basic_Plan_Features rdf:type owl:NamedIndividual ,
+                              :Basic_Features .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Before_Sunset
+:Before_Sunset rdf:type owl:NamedIndividual ,
+                        :ShortFilm ;
+               :isOwnedBy :Castle_Rock_Entertainment ;
+               :content_Cost "Rs. 99" ;
+               :content_actors """Ethan Hawke,
+Julie Delpy,
+Vernon Dobtcheff,
+Louise Lemoine""" ;
+               :content_description "Nine years after Jesse and Celine first met, they encounter each other again on the French leg of Jesse's book tour." ;
+               :content_duration "80 minutes" ;
+               :content_genre "Drama, Romance" ;
+               :content_language "English" ;
+               :content_rating "4/5 stars" ;
+               :content_release_date "July 2, 2004" ;
+               :content_title "Before Sunset" ;
+               :content_type "Short Movie" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Castle_Rock_Entertainment
+:Castle_Rock_Entertainment rdf:type owl:NamedIndividual ,
+                                    :Production_Company ;
+                           :generatesRevenueBy :Creator_Guidelines ;
+                           :signsContract :Harald_Sack ;
+                           :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Charles_White
+:Charles_White rdf:type owl:NamedIndividual ,
+                        :Subscriber ;
+               :CancelsSubscription :SubscriberAcc ;
+               :canChangeSubscription :Basic_Package ,
+                                      :Premium_Package ,
+                                      :Standard_Package ;
+               :canCreateWatchlist :SubscriberAcc ;
+               :canDownload :Before_Sunset ,
+                            :Numb ,
+                            :Oppenheimer_TheRealStory ,
+                            :Pursuit_of_Happyness ,
+                            :SmartLess ,
+                            :Specialz ,
+                            :Spirited_Away ,
+                            :Summer_Ghost ,
+                            :The_Boys ,
+                            :The_Great_Hack ,
+                            :The_Joe_Rogan_Experience ,
+                            :The_Last_of_Us ;
+               :cansetParental_Controls :SubscriberAcc ;
+               :givesRating :Before_Sunset ,
+                            :Numb ,
+                            :Oppenheimer_TheRealStory ,
+                            :Pursuit_of_Happyness ,
+                            :SmartLess ,
+                            :Specialz ,
+                            :Spirited_Away ,
+                            :Summer_Ghost ,
+                            :The_Boys ,
+                            :The_Great_Hack ,
+                            :The_Joe_Rogan_Experience ,
+                            :The_Last_of_Us ;
+               :hasBenefitsOf :SubscriberAcc ;
+               :utilizesSubscriberAccount :SubscriberAcc ;
+               :watchesContent :Numb ,
+                               :Oppenheimer_TheRealStory ,
+                               :Pursuit_of_Happyness ,
+                               :SmartLess ,
+                               :Specialz ,
+                               :Spirited_Away ,
+                               :Summer_Ghost ,
+                               :The_Boys ,
+                               :The_Great_Hack ,
+                               :The_Joe_Rogan_Experience ,
+                               :The_Last_of_Us ;
+               :SubscriberBenefits "Create Watchlist, Offline Downloads, Set Parental Controls" ;
+               :SubscriptionCancel "Convert to Guest Account" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Columbia_Pictures
+:Columbia_Pictures rdf:type owl:NamedIndividual ,
+                            :Production_Company ;
+                   :generatesRevenueBy :Creator_Guidelines ;
+                   :signsContract :Harald_Sack ;
+                   :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/CreatorAcc_01
+:CreatorAcc_01 rdf:type owl:NamedIndividual ,
+                        :creatorAccount ;
+               :analyzesContent :The_Joe_Rogan_Experience ;
+               :uploadsContent :The_Joe_Rogan_Experience ;
+               :content_Analytics """Rating,
+Views,
+Performance Chart"""^^xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/CreatorAcc_02
+:CreatorAcc_02 rdf:type owl:NamedIndividual ,
+                        :creatorAccount ;
+               :analyzesContent :Specialz ;
+               :uploadsContent :Specialz ;
+               :content_Analytics """Rating,
+Views,
+Performance Chart"""^^xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/CreatorAcc_03
+:CreatorAcc_03 rdf:type owl:NamedIndividual ,
+                        :creatorAccount ;
+               :analyzesContent :SmartLess ;
+               :uploadsContent :SmartLess ;
+               :content_Analytics """Rating,
+Views,
+Performance Chart"""^^xsd:string .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Creator_Guidelines
+:Creator_Guidelines rdf:type owl:NamedIndividual ,
+                             <http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Rule&Regulation> .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Flat_Studio
+:Flat_Studio rdf:type owl:NamedIndividual ,
+                      :Production_Company ;
+             :generatesRevenueBy :Creator_Guidelines ;
+             :signsContract :Harald_Sack ;
+             :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/GuestAcc
+:GuestAcc rdf:type owl:NamedIndividual ,
+                   :guestAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/HBO
+:HBO rdf:type owl:NamedIndividual ,
+              :Production_Company ;
+     :generatesRevenueBy :Creator_Guidelines ;
+     :signsContract :Harald_Sack ;
+     :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Harald_Sack
+:Harald_Sack rdf:type owl:NamedIndividual ,
+                      :Administrator ;
+             :supervisesContent :SmartLess ,
+                                :Specialz ,
+                                :The_Joe_Rogan_Experience ;
+             :willBlockAccount :CreatorAcc_01 ,
+                               :CreatorAcc_02 ,
+                               :CreatorAcc_03 .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Joe_Rogan
+:Joe_Rogan rdf:type owl:NamedIndividual ,
+                    :Original_Creator ;
+           :followsGuidelines :Creator_Guidelines ;
+           :generatesRevenueBy :Creator_Guidelines ;
+           :utilizesCreatorAccount :CreatorAcc_01 ;
+           :content_guidelines """Mark as explicit or not,
+Quality must be atleast 720p,
+Must not involve any religious propaganda"""^^xsd:string ;
+           :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/KingGnu
+:KingGnu rdf:type owl:NamedIndividual ,
+                  :Original_Creator ;
+         :followsGuidelines :Creator_Guidelines ;
+         :generatesRevenueBy :Creator_Guidelines ;
+         :utilizesCreatorAccount :CreatorAcc_02 ;
+         :content_guidelines """Mark as explicit or not,
+Quality must be atleast 720p,
+Must not involve any religious propaganda"""^^xsd:string ;
+         :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Linkin_Park
+:Linkin_Park rdf:type owl:NamedIndividual ,
+                      :Production_Company ;
+             :generatesRevenueBy :Creator_Guidelines ;
+             :signsContract :Harald_Sack ;
+             :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Netflix
+:Netflix rdf:type owl:NamedIndividual ,
+                  :Production_Company ;
+         :generatesRevenueBy :Creator_Guidelines ;
+         :signsContract :Harald_Sack ;
+         :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Numb
+:Numb rdf:type owl:NamedIndividual ,
+               <https://schema.org/MusicVideoObject> ;
+      :isOwnedBy :Linkin_Park ;
+      :content_Cost "Rs. 19" ;
+      :content_actors "Linkin Park" ;
+      :content_description "“Numb” is the third single and the final track of Linkin Park's second studio album, Meteora." ;
+      :content_duration "4 minutes" ;
+      :content_genre "Rock" ;
+      :content_language "English" ;
+      :content_rating "4/5 stars" ;
+      :content_release_date "March 5, 2007"^^xsd:string ;
+      :content_title "Numb (Official Music Video)" ;
+      :content_type "Music Video" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Oppenheimer_TheRealStory
+:Oppenheimer_TheRealStory rdf:type owl:NamedIndividual ,
+                                   :Documentary ;
+                          :isOwnedBy :Trinity_Creative ;
+                          :content_Cost "Rs. 59" ;
+                          :content_description "The documentary covers Oppenheimer's contribution to nuclear physics as a professor and leader of the Los Alamos Laboratory." ;
+                          :content_duration "96 minutes" ;
+                          :content_genre "Historical" ;
+                          :content_language "English" ;
+                          :content_rating "3/5 stars" ;
+                          :content_release_date "July 17, 2023" ;
+                          :content_title "Oppenheimer: The Real Story" ;
+                          :content_type "Documentary" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Premium_Package
+:Premium_Package rdf:type owl:NamedIndividual ,
+                          :Premium ;
+                 :hasFeatures :Premium_Plan_Features ;
+                 :premium_plan_features """Price Rs.1100,
+4K Video Quality,
+5 Devices Supported,
+Offline Viewing,
+Fully Ad-free Content,
+Early Access""" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Premium_Plan_Features
+:Premium_Plan_Features rdf:type owl:NamedIndividual ,
+                                :Premium_Features .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Pursuit_of_Happyness
+:Pursuit_of_Happyness rdf:type owl:NamedIndividual ,
+                               :FullLengthMovie ;
+                      :isOwnedBy :Columbia_Pictures ;
+                      :content_Cost "Rs. 99" ;
+                      :content_actors """Will Smith,
+Thandiwe Newton,
+Jaden Smith,
+Brian Howe""" ;
+                      :content_description "A struggling salesman takes custody of his son as he's poised to begin a life-changing professional career" ;
+                      :content_duration "117 minutes" ;
+                      :content_genre "Biography, Drama" ;
+                      :content_language "English" ;
+                      :content_rating "4/5 stars" ;
+                      :content_release_date "December 15, 2006" ;
+                      :content_title "The Pursuit of Happyness" ;
+                      :content_type "Full Movie" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Sean_Hayes
+:Sean_Hayes rdf:type owl:NamedIndividual ,
+                     :Original_Creator ;
+            :followsGuidelines :Creator_Guidelines ;
+            :generatesRevenueBy :Creator_Guidelines ;
+            :utilizesCreatorAccount :CreatorAcc_03 ;
+            :content_guidelines """Mark as explicit or not,
+Quality must be atleast 720p,
+Must not involve any religious propaganda"""^^xsd:string ;
+            :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/SmartLess
+:SmartLess rdf:type owl:NamedIndividual ,
+                    :Podcast ;
+           :isOwnedBy :Sean_Hayes ;
+           :content_Cost "Rs. 79" ;
+           :content_actors "Sean Hayes as Host" ;
+           :content_description "SmartLess is a comedy interview podcast hosted by Sean Hayes." ;
+           :content_duration "Approx 40 minutes per episode" ;
+           :content_genre "Talk-Show" ;
+           :content_language "English" ;
+           :content_rating "4.5/5 stars" ;
+           :content_release_date "July 20, 2020" ;
+           :content_title "SmartLess" ;
+           :content_type "Podcast Series" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Specialz
+:Specialz rdf:type owl:NamedIndividual ,
+                   <https://schema.org/MusicVideoObject> ;
+          :isOwnedBy :KingGnu ;
+          :content_Cost "Rs. 19" ;
+          :content_actors "King Gnu" ;
+          :content_description "“SPECIALZ” is a single by the Japanese band King Gnu. The song is the opening theme of “Shibuya Incidents” in the second season of the TV anime." ;
+          :content_duration "4 minutes" ;
+          :content_genre "J-pop" ;
+          :content_language "Japanese" ;
+          :content_rating "4/5 stars" ;
+          :content_release_date "September 1, 2023" ;
+          :content_title "SPECIALZ" ;
+          :content_type "Music Video" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Spirited_Away
+:Spirited_Away rdf:type owl:NamedIndividual ,
+                        :FullLengthMovie ;
+               :isOwnedBy :Studio_Ghibli ;
+               :content_Cost "Rs. 99" ;
+               :content_actors """Miyu Irino,
+Rumi Hiiragi,
+Mari Natsuki,
+Takashi Naito,
+Yasuko Sawaguchi""" ;
+               :content_description "During her family's move to the suburbs, a sullen 10-year-old girl wanders into a world ruled by gods, witches and spirits, a world where humans are changed into beasts." ;
+               :content_duration "125 minutes" ;
+               :content_genre "Animation, Adventure" ;
+               :content_language "Japanese, English" ;
+               :content_rating "4/5 stars" ;
+               :content_release_date "March 28, 2003" ;
+               :content_title "Spirited Away" ;
+               :content_type "Full Movie" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Standard_Package
+:Standard_Package rdf:type owl:NamedIndividual ,
+                           :Standard ;
+                  :hasFeatures :Standard_Plan_Features ;
+                  :standard_plan_features """Price Rs.900,
+1080p Video Quality,
+3 Devices Supported,
+Offline Viewing,
+Minor Ad-supported Content""" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Standard_Plan_Features
+:Standard_Plan_Features rdf:type owl:NamedIndividual ,
+                                 :Standard_Features .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Studio_Ghibli
+:Studio_Ghibli rdf:type owl:NamedIndividual ,
+                        :Production_Company ;
+               :generatesRevenueBy :Creator_Guidelines ;
+               :signsContract :Harald_Sack ;
+               :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/SubscriberAcc
+:SubscriberAcc rdf:type owl:NamedIndividual ,
+                        :SubscriberAccount .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Summer_Ghost
+:Summer_Ghost rdf:type owl:NamedIndividual ,
+                       :ShortFilm ;
+              :isOwnedBy :Flat_Studio ;
+              :content_Cost "Rs. 79" ;
+              :content_actors """Rina Kawaei,
+Chiaki Kobayashi,
+Miyuri Shimabukuro,
+Nobunaga Shimazaki""" ;
+              :content_description "An urban legend speaks of a summer ghost, a spirit girl who appears when fireworks are set off." ;
+              :content_duration "40 minutes" ;
+              :content_genre "Animation, Drama" ;
+              :content_language "Japanese, English" ;
+              :content_rating "3.5/5 stars" ;
+              :content_release_date "November 12, 2021" ;
+              :content_title "Summer Ghost" ;
+              :content_type "Short Movie" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/The_Boys
+:The_Boys rdf:type owl:NamedIndividual ,
+                   <https://schema.org/TVSeries> ;
+          :isOwnedBy :Amazon_Prime_Video ;
+          :content_Cost "Rs. 119" ;
+          :content_actors """Antony Starr,
+Karl Urban,
+Jack Quaid,
+Erin Moriarty,
+Jessie Usher,
+Laz Alonso,
+Chace Crawford""" ;
+          :content_description "A group of vigilantes set out to take down corrupt superheroes who abuse their superpowers." ;
+          :content_duration "Approx 55 mins per episode" ;
+          :content_genre "Action, Crime, Superhero, Black comedy" ;
+          :content_language "English" ;
+          :content_rating "4.5/5 stars" ;
+          :content_release_date "July 26, 2019" ;
+          :content_title "The Boys" ;
+          :content_type "TV Series" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/The_Great_Hack
+:The_Great_Hack rdf:type owl:NamedIndividual ,
+                         :Documentary ;
+                :isOwnedBy :Netflix ;
+                :content_Cost "Rs. 59" ;
+                :content_description "The Cambridge Analytica scandal is examined through the roles of several affected persons." ;
+                :content_duration "114 minutes" ;
+                :content_genre "Biography, Historical" ;
+                :content_language "English" ;
+                :content_rating "3.5/5 stars" ;
+                :content_release_date "July 24, 2019" ;
+                :content_title "The Great Hack" ;
+                :content_type "Documentary" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/The_Joe_Rogan_Experience
+:The_Joe_Rogan_Experience rdf:type owl:NamedIndividual ,
+                                   :Podcast ;
+                          :isOwnedBy :Joe_Rogan ;
+                          :content_Cost "Rs, 79" ;
+                          :content_actors "Joe Rogan as Host" ;
+                          :content_description "Joe Rogan hosts long form conversations with friends and guests that include comedians, actors, musicians, MMA instructors and commentators, authors and artists." ;
+                          :content_duration "Approx 120-180 minutes per episode" ;
+                          :content_genre "Talk-Show, Comedy" ;
+                          :content_language "English" ;
+                          :content_rating "4/5 stars" ;
+                          :content_release_date "December 24, 2009" ;
+                          :content_title "The Joe Rogan Experience" ;
+                          :content_type "Podcast" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/The_Last_of_Us
+:The_Last_of_Us rdf:type owl:NamedIndividual ,
+                         <https://schema.org/TVSeries> ;
+                :isOwnedBy :HBO ;
+                :content_Cost "Rs. 119" ;
+                :content_actors """Pedro Pascal,
+Bella Ramsey,
+Anna Torv,
+Gabriel Luna,
+Lamar Johnson,
+Melanie Lynskey""" ;
+                :content_description "After a global pandemic destroys civilization, a hardened survivor takes charge of a 14-year-old girl who may be humanity's last hope." ;
+                :content_duration "50 minutes per episode" ;
+                :content_genre "Action, Adventure, Drama" ;
+                :content_language "English" ;
+                :content_rating "4.5/5 stars" ;
+                :content_release_date "January 15, 2023" ;
+                :content_title "The Last of Us" ;
+                :content_type "TV Series" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Trinity_Creative
+:Trinity_Creative rdf:type owl:NamedIndividual ,
+                           :Production_Company ;
+                  :generatesRevenueBy :Creator_Guidelines ;
+                  :signsContract :Harald_Sack ;
+                  :content_revenue "Calculated per view. Different for each category" .
+
+
+###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Term&Conditions
+<http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Term&Conditions> rdf:type owl:NamedIndividual ,
+                                                                                                     <http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/Rule&Regulation> .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
