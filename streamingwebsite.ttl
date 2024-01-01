@@ -174,7 +174,7 @@
 ###  http://www.semanticweb.org/home/ontologies/2023/9/contentstreamingwebsite/willBlockAccount
 :willBlockAccount rdf:type owl:ObjectProperty ;
                   rdfs:domain :Administrator ;
-                  rdfs:range :Basic .
+                  rdfs:range :creatorAccount .
 
 
 #################################################################
