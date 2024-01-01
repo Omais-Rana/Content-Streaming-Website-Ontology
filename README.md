@@ -1,0 +1,1 @@
+An ontology developed for a non-existent Content Streaming Website which is an imitation of famous content streaming platforms i.e Netflix and YouTube but not exactly the same. Protege tool has been used for this.
